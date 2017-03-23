@@ -8,6 +8,9 @@
 # docker run -d -ti -p 11300:11300 -e MAX_JOB_SIZE=65535 --name beanstalkd dries/beanstalkd
 # docker logs <instance> will tell you which setttings were taken into account
 
+LABEL Name="Beanstalkd, a simple fast work queue"
+LABEL Version=0.0.1
+
 FROM centos:centos7
 LABEL maintainer "Dries Verachtert" <dries.verachtert@dries.eu>
 
