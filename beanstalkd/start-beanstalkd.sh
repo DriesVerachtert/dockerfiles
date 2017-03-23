@@ -1,0 +1,27 @@
+#!/bin/bash
+
+echo "env var MAX_JOB_SIZE: ${MAX_JOB_SIZE}"
+echo "env var BINLOG_DIR: ${BINLOG_DIR}"
+echo "env var BINLOG_FSYNC_PERIOD: ${BINLOG_FSYNC_PERIOD}"
+echo "env var BINLOG_SIZE: ${BINLOG_SIZE}"
+
+MAX_JOB_SIZE_PART=""
+if [ -n "$MAX_JOB_SIZE" ] ; then \
+	MAX_JOB_SIZE_PART="-z $MAX_JOB_SIZE"
+fi
+BINLOG_DIR_PART=""
+if [ -n "$BINLOG_DIR" ] ; then \
+	BINLOG_DIR_PART="-b $BINLOG_DIR"
+fi
+BINLOG_FSYNC_PERIOD_PART=""
+if [ -n "$BINLOG_FSYNC_PERIOD" ] ; then \
+	BINLOG_FSYNC_PERIOD_PART="-f $BINLOG_FSYNC_PERIOD"
+fi
+BINLOG_SIZE_PART=""
+if [ -n "$BINLOG_SIZE" ] ; then \
+	BINLOG_SIZE_PART="-s $BINLOG_SIZE"
+fi
+
+FULL_COMMAND="/usr/bin/beanstalkd -l 0.0.0.0 -p 11300 -u beanstalkd $MAX_JOB_SIZE_PART $BINLOG_DIR_PART $BINLOG_FSYNC_PERIOD_PART $BINLOG_SIZE_PART"
+echo "Command line: $FULL_COMMAND"
+$FULL_COMMAND
