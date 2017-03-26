@@ -11,10 +11,11 @@ FROM centos:centos7
 
 LABEL Name "Beanstalkd, a simple fast work queue"
 LABEL Version 0.0.1
-LABEL maintainer "Dries Verachtert" <dries.verachtert@dries.eu>
+LABEL Maintainer "Dries Verachtert" <dries.verachtert@dries.eu>
 
 RUN yum install -y epel-release && \
-	yum install -y beanstalkd
+	yum install -y beanstalkd && \
+	yum clean all
 
 EXPOSE 11300
 VOLUME /var/lib/beanstalkd
