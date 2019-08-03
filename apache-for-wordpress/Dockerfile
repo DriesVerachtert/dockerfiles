@@ -20,7 +20,7 @@ RUN yum install -y epel-release && \
 		php-posix php-simplexml php-sockets php-spl \
 		php-tokenizer php-xml php-zip php-zlib httpd fontconfig && \
 	yum clean all && \
-	sed -i '131,158s/AllowOverride None/AllowOverride All/g;' /etc/httpd/conf/httpd.conf \
+	sed -i '131,158s/AllowOverride None/AllowOverride All/g;' /etc/httpd/conf/httpd.conf && \
 	echo ServerTokens Prod >> /etc/httpd/conf/httpd.conf
 # Previous command: make sure the .htaccess of a wordpress site is working.
 # The sed command should only change the AllowOverride in the /var/www/html
